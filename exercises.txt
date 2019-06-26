@@ -1,8 +1,0 @@
-9	Squats
-9	Bench Press
-5	Crunches
-6	Walk Outs
-6	Shoulder Tap Plank
-4	Laterals
-7	Curls
-3	Leg Curl
