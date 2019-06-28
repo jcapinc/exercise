@@ -8,6 +8,7 @@ class Exercise{
 
 	static async createInteractive(interuptor = null){
 		const name = await reader.read("Exercise Name>");
+		if(name === "") return null;
 		if(typeof interuptor === "function"){
 			const interupt = interuptor(name);
 			if(typeof interupt !== "undefined" && interupt !== null) return interupt;
@@ -18,6 +19,17 @@ class Exercise{
 
 	static deserialize(record){
 		return new this(record.name,record.score);
+	}
+
+	static async interactiveLoop(storage){
+		while(true){
+			let exercise = await Exercise.createInteractive(storage.interuptor());
+			if([null,false].indexOf(exercise) > -1) continue;
+			if(typeof exercise === "object"){
+				if(typeof exercise.then === "undefined") storage.addExercise(exercise);
+				else await exercise;
+			}
+		}
 	}
 }
 
