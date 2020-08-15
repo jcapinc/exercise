@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"module": "commonjs",
+		"target": "ES2019",
+		"esModuleInterop": true,
+		"lib": ["ES2019","ES2015","DOM", ],
+		"outDir": "build"
+	},
+	"files": [
+		"exercise.ts"
+	],
+}

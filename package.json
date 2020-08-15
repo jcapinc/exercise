@@ -1,0 +1,28 @@
+{
+  "name": "exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcapinc/exercise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcapinc/exercise/issues"
+  },
+  "homepage": "https://github.com/jcapinc/exercise#readme",
+  "dependencies": {
+    "@types/node": "^14.0.27",
+    "@types/uniqid": "^5.2.0",
+    "@types/yargs": "^15.0.5",
+    "ts-node": "^8.10.2",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.9.7",
+    "uniqid": "^5.2.0"
+  }
+}

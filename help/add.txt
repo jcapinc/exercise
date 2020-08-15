@@ -1,0 +1,6 @@
+Usage: node exercise.js add [...OPTIONS]
+	--name [name]                  REQUIRED Name of the exercise
+	-n [name]
+
+	--type [type]   Type of exercise (REPETITION or DURATION)
+	-t [type]

@@ -1,0 +1,93 @@
+{
+  "exercises": [
+    {
+      "id": "1lvc0ieskdswhgf9",
+      "name": "Bench Press",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0gpkkdswhk8t",
+      "name": "Bent Over Rows",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0hwskdswhoau",
+      "name": "Barbell Curls",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0hakkdswhqmf",
+      "name": "Flys",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc03cgkdswhu6n",
+      "name": "Reverse Flys",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0gz0kdswhymu",
+      "name": "Shoulder Abduction",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc08x0kdswi365",
+      "name": "Tricep Extensions",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0i6skdswib31",
+      "name": "Squats",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0gtokdswiedo",
+      "name": "Deadlifts",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0fnokdswihlx",
+      "name": "Leg Extensions",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0hsokdswikh5",
+      "name": "Leg Curls",
+      "type": "REPETITION"
+    },
+    {
+      "id": "1lvc0h2kkdswiozh",
+      "name": "Crunches",
+      "type": "REPETITION"
+    }
+  ],
+  "logs": [],
+  "groups": [
+    {
+      "id": "1lvc0aykkdt2tpjc",
+      "name": "Midweek",
+      "exercises": [
+        "1lvc0ieskdswhgf9",
+        "1lvc0gpkkdswhk8t",
+        "1lvc0hwskdswhoau",
+        "1lvc0hakkdswhqmf",
+        "1lvc03cgkdswhu6n",
+        "1lvc0gz0kdswhymu",
+        "1lvc08x0kdswi365"
+      ],
+      "weekday": "Wed"
+    },
+    {
+      "id": "1lvc0gcwkdt2w8gg",
+      "name": "Weekend",
+      "exercises": [
+        "1lvc0i6skdswib31",
+        "1lvc0gtokdswiedo",
+        "1lvc0fnokdswihlx",
+        "1lvc0hsokdswikh5",
+        "1lvc0h2kkdswiozh"
+      ],
+      "weekday": "Sat"
+    }
+  ]
+}
