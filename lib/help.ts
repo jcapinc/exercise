@@ -37,6 +37,7 @@ function helpGenerater(name: string) {
 		});
 	}
 }
+
 export function GenerateHelp(handlers): CommandFunction {
 	return async (args) => {
 		const unit = args[2].toLocaleLowerCase();

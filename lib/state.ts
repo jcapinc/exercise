@@ -1,4 +1,4 @@
-import {resolve} from 'path';
+import { resolve } from 'path';
 import { Exercise } from './exercise';
 import { ExerciseLog } from './log';
 import { Group } from './group';
@@ -18,13 +18,13 @@ export async function LoadState(): Promise<State> {
 		res(buff.toString())
 	}));
 	const data: unknown = JSON.parse(content);
-	if (!IsState(data)) {
+	if (!isState(data)) {
 		throw new Error("The database is malformed");
 	}
 	return data;
 }
 
-export function IsState(state: unknown): state is State {
+export function isState(state: unknown): state is State {
 	if (typeof state !== 'object') {
 		return false;
 	}
@@ -44,7 +44,6 @@ export function SaveState(state: State): Promise<boolean> {
 		})
 	});
 }
-
 
 export function makeBlankState(): State {
 	return {
