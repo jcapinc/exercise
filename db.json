@@ -61,7 +61,9 @@
       "type": "REPETITION"
     }
   ],
-  "logs": [],
+  "logs": [
+    
+  ],
   "groups": [
     {
       "id": "1lvc0aykkdt2tpjc",
@@ -89,5 +91,7 @@
       ],
       "weekday": "Sat"
     }
+  ],
+  "sessions": [
   ]
 }

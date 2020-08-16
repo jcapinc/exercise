@@ -1,6 +1,10 @@
 import uniqid from 'uniqid';
-import { IDRecord, Dictionarize, AcceptMultiwordInput } from "./misc";
-import { LoadState, SaveState } from './state';
+import { IDRecord, Dictionarize, AcceptMultiwordInput, CommandResponse } from "./misc";
+import { LoadState, SaveState, State } from './state';
+import { Group } from './group';
+import { isSessionComplete, Session, createSession } from './session';
+import { ExerciseLog } from './log';
+import dayjs from 'dayjs';
 
 type ExerciseType = "REPETITION" | "DURATION";
 
@@ -137,4 +141,67 @@ export async function ShowExercises(args){
 	});
 	
 	return true;
+}
+
+export async function Status(args: string[]) {
+	if (args[2].toLocaleLowerCase() !== 'status') {
+		return false;
+	}
+	const state = await LoadState();
+	state.groups.map(group => {
+		console.log('\x1b[4m%s\x1b[0m', group.name)
+		StatusGroup(group, state)
+	});
+	return true;
+}
+
+function StatusGroup(group: Group, state: State) {
+	const filteredSessions = state.sessions.filter(session => {
+		return session.group === group.id && !isSessionComplete(session, state);
+	});
+	if (filteredSessions.length === 0) {
+		filteredSessions.push(createSession(group));
+	}
+	filteredSessions.map(session => StatusSession(session, state));
+}
+
+function StatusSession(session: Session, state: State) {
+	const exercises = Dictionarize(state.exercises, 'id');
+	const group = Dictionarize(state.groups, 'id')[session.group];
+	console.log(formatDate(session.date));
+	console.table(group.exercises.map(eid => StatusExercise(exercises[eid], session, state)));
+}
+
+interface DenormalizedExerciseLog {
+	Exercise: string;
+	Reps: string;
+	Weight: string;
+	Date: string;
+}
+
+const blank = " -- ";
+
+function StatusExercise(exercise: Exercise, session: Session, state: State): DenormalizedExerciseLog {
+	const log = state.logs.find(log => log.session === session.id && log.exerciseId === exercise.id);
+	let exerciseMessage = "";
+	if (log === undefined) {
+		return {
+			Exercise: exercise.name,
+			Reps: blank,
+			Weight: blank,
+			Date: blank
+		}
+	}
+	else {
+		return {
+			Exercise: exercise.name,
+			Reps: `${log.sets.reduce((carry, set) => carry + set, 0)} (${log.sets.join(', ')})`,
+			Weight: log.weight.toString(),
+			Date: formatDate(log.date)
+		}
+	}
+}
+
+function formatDate(date: string) {
+	return dayjs(date).format("MM/DD/YYYY");
 }

@@ -3,11 +3,13 @@ import { Exercise } from './exercise';
 import { ExerciseLog } from './log';
 import { Group } from './group';
 import { readFile, writeFile } from 'fs';
+import { Session } from './session';
 
 export interface State {
 	exercises: Exercise[];
 	logs: ExerciseLog[];
 	groups: Group[];
+	sessions: Session[];
 }
 
 const dbfile = resolve("db.json");
@@ -41,7 +43,7 @@ export function SaveState(state: State): Promise<boolean> {
 		writeFile(dbfile, JSON.stringify(state, null, 2), 'utf8', (err) => {
 			if (err) res(false);
 			else res(true);
-		})
+		});
 	});
 }
 
@@ -49,6 +51,7 @@ export function makeBlankState(): State {
 	return {
 		exercises: [],
 		logs: [],
-		groups: []
+		groups: [],
+		sessions: []
 	};
 }

@@ -2,21 +2,6 @@ import { CommandFunction } from "./misc";
 import { stat, readFile, Stats } from "fs";
 import { join } from "path";
 
-const Titles: Record<string, [string, string]> = {
-	'add': ['add -n [name]', 'Add an exercise'],
-	'delete': ['delete [identifier]','Delete an exercise by identifier [identifier] (index, id, or name)'],
-	'help': ['help [unit-command]?', 'Get Help on all commands, or on specific command'],
-	'add-group': ['add-group -n [name] -e [...exercises] -w [weekday]', 'Add a new exercise group'],
-	'show-groups': ['show-groups', 'Show existing exercise groups'],
-	'show-exercises': ['show-exercises', 'Show current exercise list']
-};
-
-export const longestFirstTitle = Object.values(Titles).reduce((carry, record) => Math.max(carry, record[0].length), 0);
-
-export function getTitles() {
-	return Titles;
-}
-
 function helpGenerater(name: string) {
 	const path = join(__dirname, 'help', name + '.txt');
 	return async (): Promise<string> => {

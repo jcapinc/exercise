@@ -1,7 +1,7 @@
 import uniqid from 'uniqid';
-import { IDRecord, DayAbrv, days, AcceptMultiwordInput } from './misc';
+import { IDRecord, DayAbrv, days, AcceptMultiwordInput, CommandResponse } from './misc';
 import { LoadState, SaveState } from './state';
-import { SelectExercise } from './exercise';
+import { SelectExercise, Exercise } from './exercise';
 
 export interface Group extends IDRecord {
 	name: string;
@@ -87,6 +87,26 @@ export async function AddGroup(args: string[]){
 	return true;
 }
 
-export async function ShowGroups(args: string[]){
+export async function DeleteGroup(args: string[]): Promise<CommandResponse> {
+	if (args[2].toLowerCase() !== 'delete-groups') {
+		return false;
+	}
 	return "Not Implemented";
+}
+
+export async function ShowGroups(args: string[]){
+	if (args[2].toLowerCase() !== "show-groups") {
+		return false;
+	}
+	return "Not Implemented";
+}
+
+export function getGroupByExercise(exercise: Exercise, groups: Group[]) {
+	for (const group of groups) {
+		const result = group.exercises.find(id => id === exercise.id);
+		if (result !== undefined) {
+			return group;
+		}
+	}
+	return false;
 }
